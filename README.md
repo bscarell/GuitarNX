@@ -5,7 +5,7 @@ see existing compiling in windows below for info
 -
 
 PSA: 
-DO NOT USE WITHOUT CORRECT DIR STRUCTURE AND MAKE SURE YOU HAVE THE DATAT FOLDER! 
+DO NOT USE WITHOUT CORRECT DIR STRUCTURE AND MAKE SURE YOU HAVE THE DATA FOLDER! 
 DO NOT RUN NRO ANYWHERE THAT ISNT /switch/GuitarNX/ and make SURE data folder is /switch/GuitarNX/data/
 this is issue with what i forked from im 99% sure/ive attempted to fix that by removing all sprintfs from code (debuggin stuff is now commented out) and i also switched 4 dir* > 0's with != NULL's
 
