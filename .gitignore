@@ -37,3 +37,6 @@
 #visual studio temp folder
 msbuild/
 build/
+GuitarNX-extract_to_sdcard_root/
+data/
+*.zip
