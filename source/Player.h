@@ -74,7 +74,7 @@ public:
 
 
 /**
- * classe représentant la potition des étoiles a l'écran
+ * classe reprï¿½sentant la potition des ï¿½toiles a l'ï¿½cran
  */
 class Etoile {
 public:
@@ -156,7 +156,7 @@ public:
 
 
 /**
- * les différents etat du jeu
+ * les diffï¿½rents etat du jeu
  */
 enum PLAYER_STATES {
 	play,
@@ -177,15 +177,15 @@ public:
 	//variables pour le score
 	int mult;//coeff multiplicateur des points
 	int points;// le score de joueur
-	int showedPoints;// le score de joueur affiché a l'écran
-	int expectedPoints;// les prochains points qui vont etre gagné
-	int suite;//nombre de notes jouée de suite actuellement
-	int accuracy;//utilisé pour le score final, précision en pourcent
-	int longestStreak;//utilisé pour le score final, la plus longe suite
+	int showedPoints;// le score de joueur affichï¿½ a l'ï¿½cran
+	int expectedPoints;// les prochains points qui vont etre gagnï¿½
+	int suite;//nombre de notes jouï¿½e de suite actuellement
+	int accuracy;//utilisï¿½ pour le score final, prï¿½cision en pourcent
+	int longestStreak;//utilisï¿½ pour le score final, la plus longe suite
 
-	//utilisé pour le menu de pause
-	int motion; //utilisé pour l'equation différentielle responsable du mouvement de texte
-	int pauseSelection; //entrée de munu séléctionné en pause
+	//utilisï¿½ pour le menu de pause
+	int motion; //utilisï¿½ pour l'equation diffï¿½rentielle responsable du mouvement de texte
+	int pauseSelection; //entrï¿½e de munu sï¿½lï¿½ctionnï¿½ en pause
 
 	//variables temporelles
 	float oggTime;//position actuel dans la musique en ms
@@ -194,7 +194,7 @@ public:
 	//listes des notes
 	std::vector<Note*> notes[5];
 
-	//float velocity;//TODO supprimer si non utilisé
+	//float velocity;//TODO supprimer si non utilisï¿½
 	std::deque<Etoile*> etoileList;
 	std::deque<Particule*> particulesList[5];
 	bool songPresent;
@@ -209,8 +209,8 @@ public:
 	char notesPath[100];
 	char temp[100];
 
-	bool touches[5];//pour savoir si les touches sont pressée a la dèrnière boucle
-	bool firetouches[5]; //pour savoir si les touches sont pressée dans la boucle boucle et pas avant
+	bool touches[5];//pour savoir si les touches sont pressï¿½e a la dï¿½rniï¿½re boucle
+	bool firetouches[5]; //pour savoir si les touches sont pressï¿½e dans la boucle boucle et pas avant
 
 
 	//new 
@@ -262,19 +262,19 @@ public:
 			//controls
 			switch (i) {
 			case 0:
-				touchesValSet(i, Pad::left() || Pad::up());
+				touchesValSet(i, Pad::up() && Pad::circle());
 				break;
 			case 1:
-				touchesValSet(i, Pad::down() || Pad::up());
+				touchesValSet(i, Pad::down() && Pad::circle());
 				break;
 			case 2:
-				touchesValSet(i, Pad::square() || Pad::triangle());
+				touchesValSet(i, Pad::left() && Pad::circle());
 				break;
 			case 3:
-				touchesValSet(i, Pad::cross());
+				touchesValSet(i, Pad::right() && Pad::circle());
 				break;
 			case 4:
-				touchesValSet(i, Pad::circle() || Pad::triangle());
+				touchesValSet(i, Pad::square() && Pad::circle());
 				break;
 			}
 			/*
@@ -682,10 +682,10 @@ public:
 			}
 
 
-			touchesValSet();//on met a jour l'état des touches
+			touchesValSet();//on met a jour l'ï¿½tat des touches
 			// gestions des notes
 			{
-				expectedPoints = 0;//on calcul dans cette variable les points qui vont etre gagné mais qui ne sont pas comptabilisé dans la variable points
+				expectedPoints = 0;//on calcul dans cette variable les points qui vont etre gagnï¿½ mais qui ne sont pas comptabilisï¿½ dans la variable points
 				for (int j = 0; j < 5; j++) {
 					for (std::vector<Note*>::iterator it = notes[j].begin(); it != notes[j].end(); ++it) {
 						Note* note = *it;
@@ -726,7 +726,7 @@ public:
 						}
 
 						if (oggTime > (note->fin + TOLERENCE)) {// the note is completely passed
-											//le +TOLERENCE sert a garder la note en mode pressée et non joué assez longtemps pour que ce soit affiché
+											//le +TOLERENCE sert a garder la note en mode pressï¿½e et non jouï¿½ assez longtemps pour que ce soit affichï¿½
 							if (!note->played && !note->missed && note->pressed) {
 								note->played = true;
 								note->released = true;
@@ -739,11 +739,11 @@ public:
 				}
 
 				for (int j = 0; j < 5; j++) {
-					if (firetouches[j]) erreur();//une touche a été pressé mais elle ne correspond a aucune note
+					if (firetouches[j]) erreur();//une touche a ï¿½tï¿½ pressï¿½ mais elle ne correspond a aucune note
 					firetouches[j] = false;
 				}
 			}
-			//gestion de la liste des étoiles
+			//gestion de la liste des ï¿½toiles
 			{
 				float delta = timeNow - timeLast;
 				if (rand() % 800000 < delta * mult) {
